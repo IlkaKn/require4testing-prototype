@@ -30,6 +30,7 @@ Datenbank: Erstelle eine leere MySQL-Datenbank mit dem Namen require4testing.<br
 Konfiguration: Die Zugangsdaten zur Datenbank befinden sich in der Datei persistence.xml.<br>
 
 Automatisches Schema: Die Datenbanktabellen werden beim ersten Start automatisch durch Hibernate erstellt.<br>
+
 Datenbank-Import (Optional):Damit das Programm direkt mit Testdaten startet, kann die beigefügte Datei require4testing_backup.sql in die leere MySQL-Datenbank importiert werden.So sind bereits erste Anforderungen, Testfälle und Testläufe vorhanden, um die Funktionen sofort zu testen.<br>
 
 
