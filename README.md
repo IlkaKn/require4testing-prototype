@@ -1,49 +1,40 @@
-# 💾 Require4Testing: Prototyp Sprint 1 (Spring Boot)
+Require4Testing - Prototyp für das Testmanagement
+Dies ist ein im Rahmen einer Fallstudie entwickelter Prototyp zur Verwaltung von Anforderungen, Testfällen und Testläufen. Das Ziel des Projekts ist es, die Workflows zwischen verschiedenen Rollen in einem Testprozess abzubilden.
 
-Dies ist das öffentliche Code-Repository für das Projekt **„Require4Testing“**, eine prototypische Web-Anwendung zur Organisation manueller Anwendertests. Die Anwendung wurde im Rahmen einer Fallstudie für den Kurs "Programmierung von industriellen Informationssystemenmit Java EE" erstellt, welche die Arbeit im Web-Development-Team eines Startups simuliert.
+Funktionen & Rollen
+Das System bietet für jeden Akteur eine eigene Ansicht:
 
----
+Requirements Engineer: Erstellen und Verwalten von Anforderungen.
 
-## 🎯 Zielsetzung (Sprint 1)
+Testfallersteller: Anlegen von Testfällen und Zuordnung zu Anforderungen.
 
-Ziel war die Entwicklung eines funktionalen Prototypen, der **fünf ausgewählte, hoch-priorisierte Anforderungen** aus dem Product Backlog (MoSCoW-Methode) rudimentär umsetzt. Der Fokus lag auf:
-1.  **Funktionalität**
-2.  **Persistente Datenhaltung**
-3.  **Dokumentation** der Architektur und des Designs.
+Testmanager: Erstellen von Testläufen sowie Zuweisung von Testern und Testfällen.
 
----
+Tester: Einsehen der zugeordneten Testfälle und Erfassen der Testergebnisse.
 
-## 💻 Technologischer Stack
+Verwendete Technologien
+Sprache: Java EE / Jakarta EE.
 
-Als Basis für dieses Projekt wurde der **Spring/Spring Boot** Technologiestack gewählt.
+Web-Framework: JSF (JavaServer Faces) mit PrimeFaces für die Benutzeroberfläche.
 
-* **Sprache:** Java [Version]
-* **Framework:** Spring Boot [Version]
-* **Persistenz:** Spring Data JPA / Hibernate
-* **Datenbank:** Relationale Datenbank [z. B. H2 (Embedded für Prototyping) oder MySQL]
-* **Build Tool:** [Maven / Gradle]
+Persistenz: JPA mit Hibernate als Persistenz-Provider.
 
----
+Datenbank: MySQL.
 
-## ⚙️ Starten der Anwendung
+Architektur: Model-View-Controller (MVC).
 
-### Voraussetzungen
+Installation & Setup
+Datenbank: Erstelle eine leere MySQL-Datenbank mit dem Namen require4testing.
 
-* Java Development Kit (JDK) [Version]
-* [Maven / Gradle]
+Konfiguration: Die Zugangsdaten zur Datenbank befinden sich in der Datei persistence.xml.
 
-### Ausführen
+Automatisches Schema: Die Datenbanktabellen werden beim ersten Start automatisch durch Hibernate erstellt (Einstellung: hbm2ddl.auto).
 
-1.  Klonen Sie das Repository:
-    ```bash
-    git clone [DIESER REPO LINK]
-    cd require4testing-prototype
-    ```
-2.  Starten Sie die Anwendung über das Build-Tool (oder Ihre IDE):
-    ```bash
-    # Beispiel mit Maven
-    ./mvnw spring-boot:run
-    ```
+Server: Das Projekt kann auf einem gängigen Application Server (z. B. WildFly oder GlassFish) als .war-Datei deployed werden.
 
-Die Anwendung startet auf dem Standard-Port: `http://localhost:8080`.
+Bedienung des Prototyps
+Da es sich um einen Prototyp handelt, wurde auf ein Login-System verzichtet.
 
+Über das Dropdown-Menü "Ansicht wechseln" im Kopfbereich der Seite kann direkt zwischen den Rollen gewechselt werden, um die Funktionen zu testen.
+
+In den Tabellen können Daten direkt bearbeitet oder über die Schaltflächen hinzugefügt und gelöscht werden.
