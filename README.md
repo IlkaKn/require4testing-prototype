@@ -1,40 +1,40 @@
-Require4Testing - Prototyp für das Testmanagement
+Require4Testing - Prototyp für das Testmanagement<br>
 Dies ist ein im Rahmen einer Fallstudie entwickelter Prototyp zur Verwaltung von Anforderungen, Testfällen und Testläufen. Das Ziel des Projekts ist es, die Workflows zwischen verschiedenen Rollen in einem Testprozess abzubilden.
+<br><br>
+Funktionen & Rollen<br>
+Das System bietet für jeden Akteur eine eigene Ansicht:<br>
 
-Funktionen & Rollen
-Das System bietet für jeden Akteur eine eigene Ansicht:
+Requirements Engineer: Erstellen und Verwalten von Anforderungen.<br>
 
-Requirements Engineer: Erstellen und Verwalten von Anforderungen.
+Testfallersteller: Anlegen von Testfällen und Zuordnung zu Anforderungen.<br>
 
-Testfallersteller: Anlegen von Testfällen und Zuordnung zu Anforderungen.
+Testmanager: Erstellen von Testläufen sowie Zuweisung von Testern und Testfällen.<br>
 
-Testmanager: Erstellen von Testläufen sowie Zuweisung von Testern und Testfällen.
+Tester: Einsehen der zugeordneten Testfälle und Erfassen der Testergebnisse.<br>
 
-Tester: Einsehen der zugeordneten Testfälle und Erfassen der Testergebnisse.
+Verwendete Technologien<br>
+Sprache: Java EE / Jakarta EE.<br>
 
-Verwendete Technologien
-Sprache: Java EE / Jakarta EE.
+Web-Framework: JSF (JavaServer Faces) mit PrimeFaces für die Benutzeroberfläche.<br>
 
-Web-Framework: JSF (JavaServer Faces) mit PrimeFaces für die Benutzeroberfläche.
+Persistenz: JPA mit Hibernate als Persistenz-Provider.<br>
 
-Persistenz: JPA mit Hibernate als Persistenz-Provider.
+Datenbank: MySQL.<br>
 
-Datenbank: MySQL.
+Architektur: Model-View-Controller (MVC).<br>
 
-Architektur: Model-View-Controller (MVC).
+Installation & Setup<br>
+Datenbank: Erstelle eine leere MySQL-Datenbank mit dem Namen require4testing.<br>
 
-Installation & Setup
-Datenbank: Erstelle eine leere MySQL-Datenbank mit dem Namen require4testing.
+Konfiguration: Die Zugangsdaten zur Datenbank befinden sich in der Datei persistence.xml.<br>
 
-Konfiguration: Die Zugangsdaten zur Datenbank befinden sich in der Datei persistence.xml.
+Automatisches Schema: Die Datenbanktabellen werden beim ersten Start automatisch durch Hibernate erstellt.<br>
 
-Automatisches Schema: Die Datenbanktabellen werden beim ersten Start automatisch durch Hibernate erstellt (Einstellung: hbm2ddl.auto).
+Server: Das Projekt kann auf einem gängigen Application Server (z. B. WildFly oder GlassFish) als .war-Datei deployed werden.<br><br>
 
-Server: Das Projekt kann auf einem gängigen Application Server (z. B. WildFly oder GlassFish) als .war-Datei deployed werden.
+Bedienung des Prototyps<br>
+Da es sich um einen Prototyp handelt, wurde auf ein Login-System verzichtet.<br>
 
-Bedienung des Prototyps
-Da es sich um einen Prototyp handelt, wurde auf ein Login-System verzichtet.
+Über das Dropdown-Menü "Ansicht wechseln" im Kopfbereich der Seite kann direkt zwischen den Rollen gewechselt werden, um die Funktionen zu testen.<br>
 
-Über das Dropdown-Menü "Ansicht wechseln" im Kopfbereich der Seite kann direkt zwischen den Rollen gewechselt werden, um die Funktionen zu testen.
-
-In den Tabellen können Daten direkt bearbeitet oder über die Schaltflächen hinzugefügt und gelöscht werden.
+In den Tabellen können Daten direkt bearbeitet oder über die Schaltflächen hinzugefügt und gelöscht werden.<br>
