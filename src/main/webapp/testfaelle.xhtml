@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Testfälle verwalten</title>
+     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+</h:head>
+<h:body>
+    <p:growl id="msgTestfall" showDetail="true" life="3000" />
+
+    <h1>Require4Testing</h1>
+    <h:form id="formTestfall">
+    	<div style="margin-bottom: 20px;">
+            <p:menuButton value="Ansicht wechseln" icon="pi pi-bars" styleClass="ui-button-outlined">
+                <p:menuitem value="- Anforderungen (RE)" outcome="anforderungen" />
+                <p:menuitem value="- Testfälle (Designer)" outcome="testfaelle"/>
+                <p:menuitem value="- Testläufe (Manager)" outcome="testlaeufe"/>
+                <p:menuitem value="- Tetergebnis (Tester)" outcome="testergebnisse"/>
+            </p:menuButton>
+        </div>
+        
+        <p:dataTable id="dtTestfaelle" var="tf" value="#{testfallController.alleTestfaelle}">
+            <f:facet name="header">
+                <h2>Testfälle verwalten</h2>
+            </f:facet>
+            
+            <p:column headerText="Name">
+                <p:inputText value="#{tf.name}" required="true" />
+            </p:column>
+			
+            <p:column headerText="Zugewiesene Anforderung">
+                <p:selectOneMenu value="#{tf.tempAnforderungId}" style="width:100%">
+                    <f:selectItem itemLabel="Bitte wählen..." itemValue="0" />
+                    
+                    <f:selectItems value="#{testfallController.alleAnforderungen}" 
+                                   var="anforderung" 
+                                   itemLabel="#{anforderung.name}" 
+                                   itemValue="#{anforderung.id}" />
+                </p:selectOneMenu>
+            </p:column>
+			
+            <p:column style="width: 80px; text-align: center;">
+                <p:commandButton icon="pi pi-trash" styleClass="ui-button-danger rounded-button"
+                                 action="#{testfallController.testfallLoeschen(tf)}"
+                                 update="dtTestfaelle :msgTestfall" process="@this">
+                     <p:confirm header="Löschen" message="Wirklich löschen?" icon="pi pi-exclamation-triangle" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+        <br/>
+        <p:commandButton value="Neuer Testfall" icon="pi pi-plus" 
+                         action="#{testfallController.neuenTestfallHinzufuegen()}" 
+                         update="dtTestfaelle" process="@this" style="margin-right: 10px"/>
+                         
+        <p:commandButton value="Speichern" icon="pi pi-check" 
+                         action="#{testfallController.testfaelleSpeichern()}" 
+                         update="dtTestfaelle :msgTestfall" />
+
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
+    </h:form>
+</h:body>
+</html>

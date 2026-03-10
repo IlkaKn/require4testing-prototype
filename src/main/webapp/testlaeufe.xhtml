@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Testläufe verwalten</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+</h:head>
+<h:body>
+    <p:growl id="msgTestlauf" showDetail="true" life="3000" />
+
+     <h1>Require4Testing</h1>
+     
+    <h:form id="formTestlauf">
+    	<div style="margin-bottom: 20px;">
+            <p:menuButton value="Ansicht wechseln" icon="pi pi-bars" styleClass="ui-button-outlined">
+                <p:menuitem value="- Anforderungen (RE)" outcome="anforderungen" />
+                <p:menuitem value="- Testfälle (Designer)" outcome="testfaelle"/>
+                <p:menuitem value="- Testläufe (Manager)" outcome="testlaeufe"/>
+                <p:menuitem value="- Tetergebnis (Tester)" outcome="testergebnisse"/>
+            </p:menuButton>
+        </div>
+        <p:dataTable id="dtTestlaeufe" var="tl" value="#{testlaufController.alleTestlaeufe}" lazy="false">
+         	<f:facet name="header">
+                <h2>Testläufe verwalten (Testmanager)</h2>
+            </f:facet>
+            
+            <p:column headerText="Testlauf Name">
+                <p:inputText value="#{tl.name}" required="true" />
+            </p:column>
+            
+            <!-- Anforderung 4: Testlauf beliebige Testfälle zuordnen -->
+           <p:column headerText="Zugewiesene Testfälle">
+    
+                <p:selectCheckboxMenu id="menu" 
+                                      value="#{tl.ausgewaehlteTestfallIds}" 
+                                      label="Testfälle wählen"
+                                     
+                                      filter="true" filterMatchMode="contains"
+                                      updateLabel="true">
+                    
+                    <f:selectItems value="#{testlaufController.alleTestfaelle}" 
+                                   var="tf" 
+                                   itemLabel="#{tf.name}" 
+                                   itemValue="#{tf.id}" /> 
+                    </p:selectCheckboxMenu>
+            
+            </p:column>
+
+			<!-- Anforderung 4: Testlauf ein Tester zuordnen -->
+            <p:column headerText="Zugewiesener Tester">
+               <p:selectOneMenu value="#{tl.tempTesterId}" style="width:100%">
+                    <f:selectItem itemLabel="Bitte wählen..." itemValue="0" />
+                    
+                    <f:selectItems value="#{testlaufController.alleTester}" 
+                                   var="tester" 
+                                   itemLabel="#{tester.name}" 
+                                   itemValue="#{tester.id}" />
+                </p:selectOneMenu>
+            </p:column>
+
+            <p:column style="width: 80px; text-align: center;">
+                <p:commandButton icon="pi pi-trash" styleClass="ui-button-danger rounded-button"
+                                 action="#{testlaufController.testlaufLoeschen(tl)}"
+                                 update="dtTestlaeufe :msgTestlauf" process="@this">
+                     <p:confirm header="Löschen" message="Wirklich löschen?" icon="pi pi-exclamation-triangle" />
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>
+        
+        <br/>
+        <p:commandButton value="Neuer Testlauf" icon="pi pi-plus" 
+                         action="#{testlaufController.neuenTestlaufHinzufuegen()}" 
+                         update="dtTestlaeufe" process="@this" style="margin-right: 10px"/>
+                         
+        <p:commandButton value="Speichern" icon="pi pi-check" 
+                         action="#{testlaufController.testlaeufeSpeichern()}" 
+                         update="dtTestlaeufe :msgTestlauf" />
+
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="Nein" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Ja" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
+    </h:form>
+</h:body>
+</html>
