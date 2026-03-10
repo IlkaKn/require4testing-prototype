@@ -30,7 +30,6 @@ Konfiguration: Die Zugangsdaten zur Datenbank befinden sich in der Datei persist
 
 Automatisches Schema: Die Datenbanktabellen werden beim ersten Start automatisch durch Hibernate erstellt.<br>
 
-Server: Das Projekt kann auf einem gängigen Application Server (z. B. WildFly oder GlassFish) als .war-Datei deployed werden.<br><br>
 
 Bedienung des Prototyps<br>
 Da es sich um einen Prototyp handelt, wurde auf ein Login-System verzichtet.<br>
